@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="/static/css/posts.css">
+{{> navbarLI}}
+<div class="container">
+    <!--Display posts table-->
+    <div class="posts-table">
+        <div class="table-head">
+            <div class="subjects">Subjects</div>
+            <div class="replies">Replies/Views</div>
+        </div>
+        {{#if posts}}
+        {{#each posts}}
+        {{> postLI this additionalVariable=../additionalVariable}}
+        {{/each}}
+        {{else}}
+        <p> No posts to show...</p>
+        {{/if}}
+    </div>
+
+    <div class="makepostcontainer">
+        <div class="post">
+            <button class="post-btn hide2" id="post-btn" onclick="showPost()">Make a Post</button>
+            <button class="cancel-btn hide" id="cancel-btn" onclick="removePost()">Cancel...</button>
+        </div>
+        <div class="post-area hide" id="post-area">
+            <form action="/post/create/currentuser/{{additionalVariable}}" method="post" enctype="application/x-www-form-urlencoded">
+                <input type="text" id="title" name="posttitle" placeholder="Title...">
+                <textarea name="postcontent" id="" placeholder="Insert text here... "></textarea>
+                <input type="submit" value="Create Post" class="makepost-btn">
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/static/js/main.js"></script>

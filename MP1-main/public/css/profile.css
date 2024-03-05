@@ -1,0 +1,240 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('/static/img/bg.jpg') no-repeat;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.card{
+    position: relative;
+    width: 350px;
+    height: 450px;
+    background: #292929;
+    border-radius: 20px;
+    box-shadow: 0 35px 80px rgba(0,0,0,0.15);
+    transition: 0.5s;
+}
+
+.card:hover{
+    height: 520px;
+}
+
+.imgBx{
+    position: absolute;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.35);
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card .content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.card .content .details{
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    transition: 0.5s;
+    transform: translateY(150px);
+}
+
+.card:hover .content .details{
+    transform: translateY(20px);
+}
+
+.card .content .details h2{
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #FF0042;
+    line-height: 1.2em;
+
+}
+
+.card .content .details h2 span{
+    font-size: 0.75em;
+    font-weight: 500;
+    opacity: 0.5;
+    color: #fff
+}
+
+.card .content .details .data h3{
+    font-size: 1em;
+    color: #FFFF;
+    line-height: 1.2em;
+    font-weight: 600;
+}
+
+.card .content .details .data h3 span{
+    font-size: 0.85em;
+    opacity: 0.5;
+    color: #fff;
+}
+.card .content .details .posts h3{
+    color: #FFFF;
+}
+.card .content .details .posts a{
+    text-decoration: none;
+}
+.card .content .details .posts a .post-title{
+    color: #FF0042;
+    font-weight: 500;
+}
+
+.card .content .details .posts a .post-info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .content .details .posts a .post-info h3{
+    font-size: 1em;
+    color: #FFFF;
+    line-height: 1.2em;
+    font-weight: 600;
+}
+
+.card .content .details .posts a .post-info h3 span{
+    font-size: 0.85em;
+    font-weight: 400;
+    opacity: 0.5;
+    color: #fff;
+}
+
+.container{
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 20px;
+    background: #FFFF;
+    transition: all 0.2s ease;
+}
+.container a{
+    color: black;
+}
+
+.edit{
+    position: relative;
+    width: 400px;
+    height: 300px;
+    top: 50px;
+    background: #292929;
+    border-radius: 20px;
+    box-shadow: 0 35px 80px rgba(0,0,0,0.15);
+    transition: 0.5s;
+}
+
+.edit .edit_content{
+    padding: 30px;
+    color: white;
+    margin: 20px;
+}
+
+input[type=file]::file-selector-button {
+    margin-right: 50px;
+    margin-bottom: 5px;
+    border: none;
+    background: #FFFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: black;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    background: #FF0042;
+  }
+
+  textarea{
+    width: 300px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    background: #FFFF;
+    padding: 10px;
+    border-radius: 10px;
+    color: black;
+  }
+  
+input[type=file]::file-selector-button:hover {
+    background: #FF0042;
+}
+
+.showhideeditprofilebtns{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.showhideeditprofilebtns button{
+    text-decoration: none;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: white;
+    width: 200px;
+}
+
+
+.hide{
+    display: none;
+}
+
+.hide2{
+    display: block;
+}
+
+.edit-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #FF0042;
+    transition: all 0.2s ease;
+}
+
+.edit-btn:active{
+    transform: scale(0.96);
+}
+
+.cancel-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #FF0042;
+    transition: all 0.2s ease;
+}
+
+.cancel-btn:active{
+    transform: scale(0.96);
+}

@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="/static/css/posts.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+<div class="currentuser">{{currentuser}}</div>
+<div class="postid">{{post.postID}}</div>
+<div>
+    <!--Topic Section-->
+    <div class="topic-container">
+        <!--Original thread-->
+        <div class="head">
+            <div class="authors">Author</div>
+            <div class="content">Topic: {{post.title}} (Read {{post.views}} Times)</div>
+        </div>
+        <div class="body">
+            <div class="authors">
+                <div class="username" id="author"><a href="/user/{{post.username}}/currentuser/{{currentuser}}">{{post.username}}</a> <span class="og_poster">Original Post</span></div>
+                <div class="profilePhotos"><img src="/{{user.photo}}" alt=""></div>
+                <div><u>{{post.date}}</u></div>
+            </div>
+            <div class="content">
+                {{post.content}}
+                <br>
+                <br>
+                <div class="votecontainer">
+                    <button id="likebtn" onclick="window.location.href='/upvotepost/{{post.postID}}/currentuser/{{currentuser}}';">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <input type="number" id="input1" value="{{post.upvote}}" name="">
+                    <button id="dislikebtn" onclick="window.location.href='/downvotepost/{{post.postID}}/currentuser/{{currentuser}}';">
+                        <i class="fa fa-thumbs-down"></i>
+                    </button>
+                    <input type="number" id="input2" value="{{post.downvote}}" name="">
+                </div>
+            </div>
+        </div>
+    </div>
+    {{#if (eq post.username currentuser)}}
+    <div class="makepostcontainer">
+            <button class="editpost-btn editHide2" id="edit-btn" onclick="showEdit()">Edit your post</button>
+            <button class="canceledit-btn editHide" id="canceledit-btn" onclick="removeEdit()">Cancel...</button>
+        <div class="canceledit-area hide" id="edit-area">
+            <form action="/post/{{post.postID}}/edit" method="post" enctype="application/x-www-form-urlencoded" id="edit_form">
+                <input type="text" name="editedtitle" placeholder="edit post title here .. " class="edit_title" required="true">
+                <textarea name="editedcontent" placeholder="edit post content here ... " class="edit_content" required="true"></textarea>
+                <input type="submit" value="Edit Post" class="edit_button">
+            </form>
+            <a id="deleteButton" href="/post/{{post.postID}}/delete"> 
+                <input type="button" class="mainpage-btn" value="Delete Post"> 
+            </a>
+        </div>
+    </div>
+
+    {{/if}}
+    <div class="head2">
+        Comments
+    </div>
+    {{#if mergedData}}
+    {{#each mergedData}}
+    {{> replyLI reply=Reply user=User currentuser=../currentuser}}
+    {{/each}}
+    {{else}}
+    <p> No replies to show...</p>
+    {{/if}}
+    <div class="makepostcontainer">
+        <div class="post">
+            <button class="post-btn hide2" id="post-btn" onclick="showPost()">Make a Reply</button>
+            <button class="cancel-btn hide" id="cancel-btn" onclick="removePost()">Cancel...</button>
+        </div>
+        <div class="post-area hide" id="post-area">
+            <form action="/reply/{{post.postID}}/create/currentuser/{{currentuser}}" method="post" enctype="application/x-www-form-urlencoded">
+                <textarea name="replycontent" id="" placeholder="Insert text here... " id="reply_content"></textarea>
+                <input type="submit" value="Create Reply" class="makepost-btn">
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <a id="Register" href="/posts/currentuser/{{currentuser}}"> 
+            <input type="button" class="mainpage-btn" value="Back to mainpage..."> 
+        </a>
+    </div>
+</div>
+<script src="/static/js/replies.js"></script>

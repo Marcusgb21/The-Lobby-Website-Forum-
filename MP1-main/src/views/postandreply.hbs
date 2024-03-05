@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="/static/css/posts.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+<div>
+    <!--Topic Section-->
+    <div class="topic-container">
+        <!--Original thread-->
+        <div class="head">
+            <div class="authors">Author</div>
+            <div class="content">Topic: {{post.title}} (Read {{post.views}} Times)</div>
+        </div>
+
+        <div class="body">
+            <div class="authors">
+                <div class="username"><a href="/user/{{post.username}}">{{post.username}}</a></div>
+                <div class="profilePhotos"><img src="/{{user.photo}}" alt=""></div>
+                <div><u>{{post.date}}</u></div>
+            </div>
+            <div class="content">
+                {{post.content}}
+                <br>
+                <br>
+                <div class="votecontainer">
+                    <button id="likebtn" >
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <input type="number" id="input1" value="{{post.upvote}}" name="">
+                    <button id="dislikebtn" >
+                        <i class="fa fa-thumbs-down"></i>
+                    </button>
+                    <input type="number" id="input2" value="{{post.downvote}}" name="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="head2">
+        Comments
+    </div>
+    {{#if mergedData}}
+    {{#each mergedData}}
+    {{> reply reply=Reply user=User}}
+    {{/each}}
+    {{else}}
+    <p> No replies to show...</p>
+    {{/if}}
+    <div class="container">
+        <a id="Register" href="/posts"> 
+            <input type="button" class="mainpage-btn" value="Back to mainpage..."> 
+        </a>
+    </div>
+</div>

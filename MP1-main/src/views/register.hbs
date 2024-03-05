@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="/static/css/reg.css">
+<div class = "center">
+    <h1>Register</h1>
+    <form action="/register" method="post">
+        <div class="fillout">
+            <span class="icon"><ion-icon name="people"></ion-icon></span>
+            <input type="text"  name="username" required>
+            <label>Username</label>
+        </div>
+        <div class="fillout">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input type="password" name="password" required>
+            <label>Password</label>
+        </div>
+
+        <div class="fillout">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input type="password" name="confirmpassword" required>
+            <label>Confirm Password</label>
+        </div>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+        <input type="submit" id="Register" value="Register"> 
+
+        <div class="login_link">
+            <a href="/posts">Back to Homepage</a>
+        </div> 
+
+    </form>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</div>

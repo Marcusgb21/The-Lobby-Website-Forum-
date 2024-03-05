@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="/static/css/profile.css">
+<div class="card">
+    <div class="imgBx">
+        <img src="/{{user.photo}}" alt="">
+    </div>
+    <div class="content">
+        <div class="details">
+            <h2>{{user.username}}<br><span>{{user.description}}</span></h2>
+            <div class="data">
+                <h3>{{user.numberofposts}}<br><span>Posts</span></h3>
+            </div>
+            <br>
+            <div class="posts">
+                <h3>Latest Post</h3>
+                <hr>
+                {{#if post}}
+                <a href="/replies/{{post.postID}}/currentuser/{{user.username}}">
+                    <div class="post-title">{{post.title}}</div>
+                    <div class="post-info">
+                        <h3>{{post.replies}}<br><span>Replies</span></h3>
+                        <h3>{{post.views}}<br><span>Views</span></h3>
+                        <h3>{{post.date}}<br><span>Date</span></h3>
+                    </div>
+                </a>
+                {{else}}
+                <div class="post-title">No post to show...</div>
+                <br> <br>
+                {{/if}}
+                <h3>Latest Reply</h3>
+                <hr>
+                {{#if reply}}
+                <a href="/replies/{{reply.postID}}/currentuser/{{user.username}}">
+                    <div class="post-title">{{reply.content}}</div>
+                    <div class="post-info">
+                        <h3>{{reply.upvote}}<br><span>Upvotes</span></h3>
+                        <h3>{{reply.downvote}}<br><span>Downvotes</span></h3>
+                        <h3>{{reply.date}}<br><span>Date</span></h3>
+                    </div>
+                </a>
+                {{else}}
+                <div class="post-title">No replies to show...</div>
+                <br> <br>
+                {{/if}}
+                <div class="container">
+                    <a id="Register" href="/posts/currentuser/{{user.username}}">Back to Homepage...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="showhideeditprofilebtns">
+    <button class="edit-btn hide2" id="edit-btn" onclick="showProfile()">Edit Profile</button>
+    <button class="cancel-btn hide" id="cancel-btn" onclick="removeProfile()">Cancel...</button>
+</div>
+<div class="edit hide" id="edit-area">
+    <div class="edit_content">
+        <form action="/user/{{user.username}}/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <input type="submit" value="Upload Image">
+        </form>
+        <form action="/user/{{user.username}}/edit" method="post" enctype="application/x-www-form-urlencoded">
+        <textarea name="description" placeholder="description here ... "></textarea>
+        <input type="submit" value="Edit Description">
+        </form>
+    </div>
+
+</div>
+<script src="/static/js/profile.js"></script>
